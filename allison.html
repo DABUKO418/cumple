@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; background-color: #ffe4e1; }
+        #message { font-size: 24px; margin: 20px; }
+        #photo { display: none; max-width: 80%; margin-top: 20px; }
+        button { padding: 10px 20px; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>¡Feliz Cumpleaños Summer!</h1>
+    <p id="message">Haz clic para ver un mensaje especial...</p>
+    <button onclick="showMessage()">Haz clic aquí</button>
+    <img id="photo" src="allison.jpg" alt="Foto especial">
+
+    <script>
+        let messages = [
+            "¡Eres una persona increíble!",
+            "Espero que este día maravilloso mi amor.",
+            "Que la felicidad te acompañe siempre.",
+            "¡Te mereces lo mejor del mundo!",
+            "Aquí tienes un recuerdo aprendí a programar para ti..."
+        ];
+        let index = 0;
+
+        function showMessage() {
+            let messageElement = document.getElementById("message");
+            if (index < messages.length) {
+                messageElement.innerText = messages[index];
+                index++;
+            } else {
+                messageElement.style.display = "none";
+                document.getElementById("photo").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
