@@ -87,26 +87,49 @@
     <button onclick="showMessage()">Haz clic aquí</button>
     <img id="photo" src="tu-foto.jpg" alt="Foto especial">
 
+    <!-- Sonido kawaii -->
+    <audio id="clickSound" src="kawaii.mp3"></audio>
+    <audio id="photoSound" src="magic.mp3"></audio>
+
     <script>
         let messages = [
             "💜 ¡Eres una persona increíble! 💜",
             "🌟 Espero que este día sea tan especial como tú. 🌟",
             "🎉 Que la felicidad te acompañe siempre. 🎉",
             "💕 ¡Te mereces lo mejor del mundo! 💕",
-            "💖 Aquí tienes un recuerdo especial... 💖"
+            "💖 Aquí tienes un recuerdo especial... 💖",
+            "🌸 Eres un regalo para el mundo, nunca lo olvides. 🌸",
+            "✨ Brillas más que todas las estrellas juntas. ✨",
+            "🎂 Hoy celebramos el día en que llegó alguien maravilloso. 🎂",
+            "🌈 Que este año traiga más amor y sueños cumplidos. 🌈",
+            "💗 Cada día a tu lado es un día perfecto. 💗",
+            "🎶 Tu risa es mi canción favorita en el mundo. 🎶",
+            "🌞 Eres mi sol en los días nublados. 🌞",
+            "💫 Gracias por existir y llenar mi vida de luz. 💫",
+            "🎁 Hoy es tu día, así que ¡disfrútalo al máximo! 🎁",
+            "🌟 Tienes un corazón más hermoso que cualquier joya. 🌟",
+            "🌸 Que este nuevo año de vida te traiga pura felicidad. 🌸",
+            "💌 Si pudiera pedir un deseo, sería verte sonreír siempre. 💌",
+            "💕 La vida es más linda porque tú estás en ella. 💕",
+            "🌻 Que siempre florezcas con amor y alegría. 🌻",
+            "🎆 Eres la chispa de luz que ilumina a todos a tu alrededor. 🎆"
         ];
         let index = 0;
 
         function showMessage() {
             let messageElement = document.getElementById("message");
+            let clickSound = document.getElementById("clickSound");
+
             if (index < messages.length) {
                 messageElement.innerText = messages[index];
                 messageElement.style.opacity = "1";
+                clickSound.play(); // Reproduce el sonido kawaii
                 index++;
-                setTimeout(() => messageElement.style.opacity = "0", 1500); // Se desvanece después de 1.5 segundos
+                setTimeout(() => messageElement.style.opacity = "0", 1500);
             } else {
                 messageElement.style.display = "none";
                 document.getElementById("photo").style.display = "block";
+                document.getElementById("photoSound").play(); // Reproduce sonido al mostrar la foto
             }
         }
 
