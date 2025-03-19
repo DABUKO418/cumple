@@ -149,6 +149,20 @@
         }
 
         setInterval(createHeart, 500); // Genera corazones cada 0.5s
-    </script>
+    </script><audio id="background-music" loop>
+    <source src="musica.mp3" type="audio/mp3">
+    Tu navegador no soporta audio.
+</audio>
+
+<script>
+    // Iniciar la música cuando el usuario haga clic en cualquier parte de la página
+    document.addEventListener("click", function() {
+        let music = document.getElementById("background-music");
+        if (music.paused) {
+            music.play();
+        }
+    });
+</script>
+
 </body>
 </html>
