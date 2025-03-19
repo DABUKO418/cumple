@@ -135,33 +135,42 @@
         let photoIndex = 0;
 
         function showMessage() {
-            let messageElement = document.getElementById("message");
-            let clickSound = document.getElementById("clickSound");
-            let photoContainer = document.getElementById("photo-container");
+    let messageElement = document.getElementById("message");
+    let clickSound = document.getElementById("clickSound");
+    let photoContainer = document.getElementById("photo-container");
+    let music = document.getElementById("background-music");
 
-            // Mostrar mensajes
-            if (index < messages.length) {
-                messageElement.innerText = messages[index];
-                messageElement.style.opacity = "1";
-                clickSound.play();
-                index++;
-                setTimeout(() => messageElement.style.opacity = "0", 8000);
-            } 
-            // Mostrar fotos después de los mensajes
-            else if (photoIndex < images.length) {
-                let newPhoto = document.createElement("img");
-                newPhoto.src = images[photoIndex];
-                newPhoto.classList.add("photo");
-                photoContainer.appendChild(newPhoto);
-                document.getElementById("photoSound").play();
-                photoIndex++;
-            }
+    // Iniciar la música solo una vez
+    if (music.paused) {
+        music.play();
+    }
 
-            // Crear 5 corazones morados por cada clic
-            for (let i = 0; i < 15; i++) {
-                createHeart();
-            }
-        }
+    // Mostrar mensajes
+    if (index < messages.length) {
+        messageElement.innerText = messages[index];
+        messageElement.style.opacity = "1";
+        clickSound.play();
+        index++;
+
+        // Aumentar duración del mensaje en pantalla (8 segundos)
+        setTimeout(() => messageElement.style.opacity = "0", 8000);
+    } 
+    // Mostrar fotos después de los mensajes
+    else if (photoIndex < images.length) {
+        let newPhoto = document.createElement("img");
+        newPhoto.src = images[photoIndex];
+        newPhoto.classList.add("photo");
+        photoContainer.appendChild(newPhoto);
+        document.getElementById("photoSound").play();
+        photoIndex++;
+    }
+
+    // Crear 20 corazones morados por cada clic
+    for (let i = 0; i < 15; i++) {
+        createHeart();
+    }
+}
+
 
         function createHeart() {
             let heart = document.createElement("div");
