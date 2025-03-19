@@ -113,23 +113,30 @@
             "💕 La vida es más linda porque tú estás en ella. 💕",
             "🌻 Que siempre florezcas con amor y alegría. 🌻",
             "🎆 Eres la chispa de luz que ilumina a todos a tu alrededor. 🎆"
-        ];
+         ];
         let index = 0;
+        let photos = ["foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg"];
+        let photoIndex = 0;
 
         function showMessage() {
             let messageElement = document.getElementById("message");
             let clickSound = document.getElementById("clickSound");
+            let photoContainer = document.getElementById("photo-container");
 
             if (index < messages.length) {
                 messageElement.innerText = messages[index];
                 messageElement.style.opacity = "1";
-                clickSound.play(); // Reproduce el sonido kawaii
+                clickSound.play();
                 index++;
                 setTimeout(() => messageElement.style.opacity = "0", 1500);
-            } else {
-                messageElement.style.display = "none";
-                document.getElementById("photo").style.display = "block";
-                document.getElementById("photoSound").play(); // Reproduce sonido al mostrar la foto
+            } else if (photoIndex < photos.length) {
+                let newPhoto = document.createElement("img");
+                newPhoto.src = photos[photoIndex];
+                newPhoto.classList.add("photo");
+                newPhoto.style.display = "block";
+                photoContainer.appendChild(newPhoto);
+                document.getElementById("photoSound").play();
+                photoIndex++;
             }
         }
 
