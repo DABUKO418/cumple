@@ -32,7 +32,7 @@
             transition: opacity 0.8s ease-in-out;
         }
 
-        #photo {
+        .photo {
             display: none;
             max-width: 30%;
             margin-top: 20px;
@@ -63,29 +63,13 @@
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
         }
-
-        /* Corazones flotantes */
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: pink;
-            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 80%, 25% 100%, 0% 35%);
-            opacity: 0.7;
-            animation: floatHeart 5s linear infinite;
-        }
-
-        @keyframes floatHeart {
-            from { transform: translateY(0) scale(1); opacity: 1; }
-            to { transform: translateY(-100vh) scale(1.5); opacity: 0; }
-        }
     </style>
 </head>
 <body>
     <h1>💜 ¡Feliz Cumpleaños Summer! 💜</h1>
     <p id="message">Haz clic para ver un mensaje especial...</p>
     <button onclick="showMessage()">Presiona aquí</button>
-    <img id="photo" src="ali.jpg" alt="Foto especial">
+    <div id="photo-container"></div>
 
     <!-- Sonido kawaii -->
     <audio id="clickSound" src="kawaii.mp3"></audio>
@@ -139,37 +123,24 @@
                 photoIndex++;
             }
         }
+    </script>
 
-        // Crear corazones animados
-        function createHeart() {
-            let heart = document.createElement("div");
-            heart.classList.add("heart");
-            document.body.appendChild(heart);
+    <audio id="background-music" loop>
+        <source src="musica.mp3" type="audio/mp3">
+        Tu navegador no soporta audio.
+    </audio>
 
-            let randomX = Math.random() * window.innerWidth;
-            let duration = Math.random() * 3 + 2;
+    <script>
+        document.addEventListener("click", function() {
+            let music = document.getElementById("background-music");
+            if (music.paused) {
+                music.play();
+            }
+        });
+    </script>
+</body>
+</html>
 
-            heart.style.left = randomX + "px";
-            heart.style.animationDuration = duration + "s";
-
-            setTimeout(() => heart.remove(), duration * 1000);
-        }
-
-        setInterval(createHeart, 500); // Genera corazones cada 0.5s
-    </script><audio id="background-music" loop>
-    <source src="musica.mp3" type="audio/mp3">
-    Tu navegador no soporta audio.
-</audio>
-
-<script>
-    // Iniciar la música cuando el usuario haga clic en cualquier parte de la página
-    document.addEventListener("click", function() {
-        let music = document.getElementById("background-music");
-        if (music.paused) {
-            music.play();
-        }
-    });
-</script>
 
 </body>
 </html>
