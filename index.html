@@ -42,12 +42,11 @@
         }
 
         .photo {
-            max-width: 150px;
+            width: 150px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             animation: fadeIn 1.5s ease-in-out;
-            display: none;
         }
 
         button {
@@ -75,7 +74,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* Estilos para los corazones */
+        /* Corazones flotantes */
         .heart {
             position: absolute;
             font-size: 24px;
@@ -100,7 +99,7 @@
     <p id="message">Haz clic para ver un mensaje especial...</p>
     <button onclick="showMessage()">Presiona aquí</button>
     
-    <!-- Contenedor donde se mostrarán las imágenes -->
+    <!-- Contenedor de las imágenes -->
     <div id="photo-container"></div>
 
     <!-- Sonidos -->
@@ -154,7 +153,6 @@
                 newPhoto.src = images[photoIndex];
                 newPhoto.classList.add("photo");
                 photoContainer.appendChild(newPhoto);
-                setTimeout(() => newPhoto.style.display = "block", 500);
                 document.getElementById("photoSound").play();
                 photoIndex++;
             }
@@ -200,4 +198,5 @@
 
 </body>
 </html>
+
 
